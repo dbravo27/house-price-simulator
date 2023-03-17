@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Simulador de Precios de Propiedades</h1>
-    <form method="POST" action="{% url 'calculate_estimate' %}">
+    <form method="POST" action="{% url 'house_price_app:input_form' %}">
         {% csrf_token %}
         <!-- Add input fields for house features and contact information -->
         <label for="city">Departamento:</label>
@@ -35,7 +35,7 @@
         <label for="last_name">Apellido:</label>
         <input type="text" id="last_name" name="last_name" required><br>
 
-        <input type="submit" value="Calculate estimate">
+        <input type="submit" value="Calcular estimado">
     </form>
 </body>
 </html>
