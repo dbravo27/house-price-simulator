@@ -8,9 +8,11 @@ import scrapy
 
 class UruguayPropertyScrapingItem(scrapy.Item):
     category = scrapy.Field()
-    location = scrapy.Field()
+    barrio = scrapy.Field()
+    departamento = scrapy.Field()
     square_meters = scrapy.Field()
     bedrooms = scrapy.Field()
     bathrooms = scrapy.Field()
     price = scrapy.Field()
     currency = scrapy.Field()
+    full_link = scrapy.Field()
