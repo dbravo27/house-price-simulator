@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulador de Precios de Propiedades</title>
+</head>
+<body>
+    <h1>Simulador de Precios de Propiedades</h1>
+    <form method="POST" action="{% url 'calculate_estimate' %}">
+        {% csrf_token %}
+        <!-- Add input fields for house features and contact information -->
+        <label for="city">Departamento:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="neighborhood">Barrio:</label>
+        <input type="text" id="neighborhood" name="neighborhood" required><br>
+
+        <label for="square_meters">Metros cuadrados:</label>
+        <input type="number" id="square_meters" name="square_meters" required><br>
+
+        <label for="bedrooms">Numero de habitaciones:</label>
+        <input type="number" id="bedrooms" name="bedrooms" required><br>
+
+        <label for="bathrooms">Numero de banos:</label>
+        <input type="number" id="bathrooms" name="bathrooms" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="phone_number">Numero de telefono:</label>
+        <input type="text" id="phone_number" name="phone_number" required><br>
+
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="last_name">Apellido:</label>
+        <input type="text" id="last_name" name="last_name" required><br>
+
+        <input type="submit" value="Calculate estimate">
+    </form>
+</body>
+</html>
+
