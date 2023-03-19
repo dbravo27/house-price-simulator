@@ -9,7 +9,7 @@ for item in data:
     item["square_meters"] = item["square_meters"]
     item["bedrooms"] = item["bedrooms"]
     item["bathrooms"] = item["bathrooms"]
-    item["price"] = int(float(item["price"]) * 1000)
+    item["price"] = int(item["price"])
 
 # Save the modified JSON back to the file
 with open("uruguay_property_scraping/infocasas.json", "w") as f:
