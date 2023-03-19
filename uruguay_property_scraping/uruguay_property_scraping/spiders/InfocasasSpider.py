@@ -66,7 +66,7 @@ class InfocasasSpider(scrapy.Spider):
             if len(price_list) < 4:
                 continue
 
-            price = price_list[3]
+            price = int(price_list[3])
             currency = listings_wrapper.css(
                 f"div:nth-child({i}) div.lc-price strong::text"
             ).getall()[1]
