@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Precio Estimado de la Propiedad</title>
-</head>
-<body>
 
+<head>
+    <title>Property Price Estimator</title>
+</head>
+
+<body>
+    <h1>{{ message }}</h1>
+    {% if estimated_cost %}
+    <p>{{ estimated_cost }}</p>
+    {% endif %}
+</body>
+
+</html>

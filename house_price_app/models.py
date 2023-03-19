@@ -2,6 +2,11 @@ from django.db import models
 
 
 class House(models.Model):
+    class Meta:
+        db_table = "house"
+        app_label = "house_price_app"
+        managed = False
+
     id = models.IntegerField(primary_key=True)
     category = models.CharField(max_length=32)
     barrio = models.CharField(max_length=200)
