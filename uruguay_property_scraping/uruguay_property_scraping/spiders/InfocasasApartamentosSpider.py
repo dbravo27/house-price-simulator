@@ -7,16 +7,15 @@ import scrapy
 base_url = "https://www.infocasas.com.uy/"
 
 
-class InfocasasSpider(scrapy.Spider):
-    name = "Infocasas"
+class InfocasasApartamentosSpider(scrapy.Spider):
+    name = "InfocasasApartamentos"
     allowed_domains = ["infocasas.com.uy"]
     start_urls = [
-        "https://www.infocasas.com.uy/alquiler/casas",
         "https://www.infocasas.com.uy/alquiler/apartamentos",
     ]
 
     def __init__(self, *args, **kwargs):
-        super(InfocasasSpider, self).__init__(*args, **kwargs)
+        super(InfocasasApartamentosSpider, self).__init__(*args, **kwargs)
         self.items = []
 
     def parse(self, response):
@@ -25,10 +24,7 @@ class InfocasasSpider(scrapy.Spider):
         for i in range(1, len(listings_wrapper.css("a.lc-cardCover")) + 1):
             last_segment = response.url.split("/")[-1]
 
-            if last_segment.startswith("pagina"):
-                category = response.url.split("/")[-2]
-            else:
-                category = last_segment
+            category = "apartamento"
             barrio = listings_wrapper.css(
                 f"div:nth-child({i}) strong.lc-location::text"
             ).getall()[0]
@@ -66,7 +62,12 @@ class InfocasasSpider(scrapy.Spider):
             if len(price_list) < 4:
                 continue
 
-            price = int(price_list[3])
+            if price_list[3].strip():
+                price = int(price_list[3].replace(".", ""))
+            else:
+                print("Price not found, skipping this listing")
+                continue
+
             currency = listings_wrapper.css(
                 f"div:nth-child({i}) div.lc-price strong::text"
             ).getall()[1]
@@ -98,5 +99,5 @@ class InfocasasSpider(scrapy.Spider):
             yield response.follow(full_url, callback=self.parse)
 
     def closed(self, reason):
-        with open("infocasas.json", "w") as f:
+        with open("infocasasapartamentos.json", "w") as f:
             json.dump(self.items, f)

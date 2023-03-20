@@ -7,7 +7,7 @@ class House(models.Model):
         app_label = "house_price_app"
         managed = False
 
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     category = models.CharField(max_length=32)
     barrio = models.CharField(max_length=200)
     departamento = models.CharField(max_length=200)
