@@ -33,7 +33,7 @@ def calculate_estimate(request):
         category = request.POST["category"]
         square_meters = float(request.POST["square_meters"])
         bedrooms = int(request.POST["bedrooms"])
-        bathrooms = int(request.POST["bathrooms"])
+        # bathrooms = int(request.POST["bathrooms"])
         email = request.POST["email"]
         phone_number = request.POST["phone_number"]
         name = request.POST["name"]
@@ -44,7 +44,7 @@ def calculate_estimate(request):
         max_square_meters = square_meters * 1.1
 
         print(
-            f"Filter criteria: departamento={departamento}, barrio={barrio}, category={category}, bedrooms={bedrooms}, bathrooms={bathrooms}, square_meters__range=({min_square_meters}, {max_square_meters})"
+            f"Filter criteria: departamento={departamento}, barrio={barrio, }category={category}, bedrooms={bedrooms}, square_meters__range=({min_square_meters}, {max_square_meters})"
         )
 
         houses = House.objects.filter(
@@ -52,7 +52,7 @@ def calculate_estimate(request):
             barrio=barrio,
             category=category,
             bedrooms=bedrooms,
-            bathrooms=bathrooms,
+            # bathrooms=bathrooms,
             square_meters__range=(min_square_meters, max_square_meters),
         )
 
@@ -92,7 +92,7 @@ def calculate_estimate(request):
                 barrio,
                 square_meters,
                 bedrooms,
-                bathrooms,
+                # bathrooms,
                 estimated_cost,
             ]
         ]

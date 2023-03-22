@@ -22,8 +22,6 @@ class InfocasasApartamentosSpider(scrapy.Spider):
         listings_wrapper = response.css("section.listingsWrapper")
 
         for i in range(1, len(listings_wrapper.css("a.lc-cardCover")) + 1):
-            last_segment = response.url.split("/")[-1]
-
             category = "apartamento"
             barrio = listings_wrapper.css(
                 f"div:nth-child({i}) strong.lc-location::text"
